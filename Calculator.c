@@ -406,6 +406,83 @@ int main()
                     }
                     break;
                 }
+
+                case 3:
+                { // Matrix Multiplication
+                    int rows1, cols1, rows2, cols2;
+                    printf("Enter the number of rows for Matrix 1: ");
+                    scanf("%d", &rows1);
+                    printf("Enter the number of columns for Matrix 1 (rows of Matrix 2): ");
+                    scanf("%d", &cols1);
+                    printf("Enter the number of rows for Matrix 2: ");
+                    scanf("%d", &rows2);
+                    printf("Enter the number of columns for Matrix 2: ");
+                    scanf("%d", &cols2);
+
+                    if (cols1 != rows2)
+                    {
+                        printf("\nMatrix multiplication not possible. Columns of Matrix 1 must equal rows of Matrix 2.\n");
+                        break;
+                    }
+
+                    int matrix1[rows1][cols1], matrix2[rows2][cols2], result[rows1][cols2];
+
+                    // Initialize result matrix to 0
+                    for (int i = 0; i < rows1; i++)
+                    {
+                        for (int j = 0; j < cols2; j++)
+                        {
+                            result[i][j] = 0;
+                        }
+                    }
+
+                    // Input elements for Matrix 1
+                    printf("\nEnter elements for Matrix 1:\n");
+                    for (int i = 0; i < rows1; i++)
+                    {
+                        for (int j = 0; j < cols1; j++)
+                        {
+                            printf("Matrix1[%d][%d]: ", i + 1, j + 1);
+                            scanf("%d", &matrix1[i][j]);
+                        }
+                    }
+
+                    // Input elements for Matrix 2
+                    printf("\nEnter elements for Matrix 2:\n");
+                    for (int i = 0; i < rows2; i++)
+                    {
+                        for (int j = 0; j < cols2; j++)
+                        {
+                            printf("Matrix2[%d][%d]: ", i + 1, j + 1);
+                            scanf("%d", &matrix2[i][j]);
+                        }
+                    }
+
+                    // Perform Matrix Multiplication
+                    for (int i = 0; i < rows1; i++)
+                    {
+                        for (int j = 0; j < cols2; j++)
+                        {
+                            for (int k = 0; k < cols1; k++)
+                            {
+                                result[i][j] += matrix1[i][k] * matrix2[k][j];
+                            }
+                        }
+                    }
+
+                    // Display the result
+                    printf("\nResult of Matrix Multiplication:\n");
+                    for (int i = 0; i < rows1; i++)
+                    {
+                        for (int j = 0; j < cols2; j++)
+                        {
+                            printf("%d\t", result[i][j]);
+                        }
+                        printf("\n");
+                    }
+                    break;
+                }
+
                 case 4:
                     printf("\n\n** Thank You **\n");
                     break;
